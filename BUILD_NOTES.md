@@ -4,18 +4,13 @@
 - **Bounty:** news-image-20261117 ($250, 50 places). Deadline 19 Nov 2026 00:00 UTC (07:00 WIB).
 - **Program:** `main.py` (Python 3.13, pure stdlib) — copies the bundled `entry.png` to `/output/entry.png`. No network, no drawing. Two runs write identical bytes.
 
-## Image
-- `entry.png`: 1024×1024 PNG, 676,902 bytes (≤1 MiB). Generated with media.generate_image (source 1600×1600, 1,224,314 bytes — resized to 1024×1024 with PIL LANCZOS, verified visually after resize).
-- Masthead names the day: "TUESDAY 17 NOVEMBER 2026 / WORLD NEWS IN ONE PICTURE".
-- Four panels (2×2), each with a short caption bar:
-  1. **ASIA SUMMIT TALKS** — three leaders at a summit table, Shenzhen skyline at dusk. Trump travels to Asia for APEC in Shenzhen and the planned trilateral talks with Xi Jinping and Vladimir Putin (nuclear issues, Ukraine, trade).
-  2. **KERCH BRIDGE HIT** — damaged sea bridge, smoke. Ukrainian strike damaged the Kerch/Crimean Bridge; Russia struck Kyiv bridges the same day.
-  3. **JETS SCRAMBLED** — fighter jets over the sea. Japan scrambled jets after Russian aircraft violated its airspace.
-  4. **ESTONIA CLOSES BORDER** — closed border gate, Estonian flag, officials. Estonia announced it will close its Russian border crossings from 1 Dec, citing a foiled Russian sabotage plot.
-- All text in the image was viewed directly after generation and after resize: legible, spelled correctly, no garbled text.
-- Other stories considered but left out (breadth vs. legibility): the five-nation EU Rwanda return hub, the Microsoft outage explanation, the Sudan UN death toll report, tankers hit near Hormuz.
+## Image (v2 — resubmit)
+- v1 ranked 3,835/3,903 (judge win rate 88.7%, 6–6 in 12 games): only 4 stories, while the winners show 30–43. v2 rebuilds the image in the winners' style.
+- `entry.png`: 1024×1024 PNG, 168,025 bytes (≤1 MiB). Drawn programmatically with PIL by `../draw_v2.py` (DejaVu fonts, flat vector panels, dotted world map from a hand-coded land mask) — every headline is typeset, nothing is AI-generated, so no garbled text.
+- Dense front page, 43 stories: masthead "Tuesday 17 November 2026", three illustrated panels (Kerch Bridge hit, Hormuz tanker, US/China/Russia flags), three featured stories (Kerch Bridge span fell; Iran drones at US radar in Bahrain, US hits back; Trump, Xi and Putin to meet in Shenzhen), ten medium stories with icons (Ebola DR Congo, COP31, measles-free status, Nvidia, Gaza truce, Mongolia president, Serbia, Bangladesh garment workers, An-12 crash, Mozambique trial), a dotted world map with numbered pins, and an "ALSO ON TUESDAY 17 NOVEMBER" list of 30 one-line stories.
+- All text viewed directly after generation: legible, spelled correctly, no truncated list items.
 
 ## Verification
-- Program run twice: byte-identical output, sha256 `fc350e946ced664be8cc6ed83786859f85046c89e021d1e6d94dbb21ee6f2231`.
-- Output: 1024×1024, 676,902 bytes.
-- Local check: 12 passed, 1 failed, 5 skipped — only thinking_priced FAILS (0 usage rows; the row is written when this subagent run completes — the parent must re-bundle with --muse-usage before submitting). thinking_reproduces 97.4% (38/39), entrypoint main.py 20 authored lines, thinking_revised 2 messages, thinking_in_window PASS.
+- Program run twice: byte-identical output, sha256 `9b212cd991a84a4caacc9d0293730b4c9ae0ae4d1a63d531bf5deff96afa6978`.
+- Output: 1024×1024, 168,025 bytes.
+- Local check (v2 files, v1 transcripts bundle): 13 passed, 0 failed, 5 skipped (thinking_reproduces 64.4%). Parent re-bundles with the v2 session before submitting.
